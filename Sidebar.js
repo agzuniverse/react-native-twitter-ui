@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, TouchableHighlight} from 'react-native';
+import {Image, Text, TouchableNativeFeedback} from 'react-native';
 import {Container, Thumbnail, Icon} from 'native-base';
 import {Col, Row, Grid} from 'react-native-easy-grid';
 
@@ -24,30 +24,42 @@ class Sidebar extends React.Component {
                         </Row>
                         <Container style={{borderBottomColor: 'rgba(0,0,0,0.1)',borderBottomWidth: 1, marginLeft:-20}}/>
                         <Row size={3}/>
-                        <Row size={7} style={{flexDirection:'row'}}>
-                            <Icon style={{fontSize:22}} name='person'/>
-                            <Text style={{fontSize:16}}>  Profile</Text>
-                        </Row>
-                        <Row size={7} style={{flexDirection:'row'}}>
-                            <Icon style={{fontSize:22}} name='list-box'/>
-                            <Text style={{fontSize:16}}>  Lists</Text>
-                        </Row>
-                        <Row size={7} style={{flexDirection:'row'}}>
-                            <Icon style={{fontSize:22}} name='flash'/>
-                            <Text style={{fontSize:16}}>  Moments</Text>
-                        </Row>
-                        <Row size={7} style={{flexDirection:'row'}}>
-                            <Icon style={{fontSize:22}} name='ios-browsers'/>
-                            <Text style={{fontSize:16}}>  Highlights</Text>
-                        </Row>
+                        <TouchableNativeFeedback>
+                            <Row size={7} style={{flexDirection:'row'}}>
+                                <Icon style={{fontSize:22}} name='person'/>
+                                <Text style={{fontSize:16}}>  Profile</Text>
+                            </Row>
+                        </TouchableNativeFeedback>
+                        <TouchableNativeFeedback>
+                            <Row size={7} style={{flexDirection:'row'}}>
+                                <Icon style={{fontSize:22}} name='list-box'/>
+                                <Text style={{fontSize:16}}>  Lists</Text>
+                            </Row>
+                        </TouchableNativeFeedback>
+                        <TouchableNativeFeedback>
+                            <Row size={7} style={{flexDirection:'row'}}>
+                                <Icon style={{fontSize:22}} name='flash'/>
+                                <Text style={{fontSize:16}}>  Moments</Text>
+                            </Row>
+                        </TouchableNativeFeedback>
+                        <TouchableNativeFeedback>
+                            <Row size={7} style={{flexDirection:'row'}}>
+                                <Icon style={{fontSize:22}} name='ios-browsers'/>
+                                <Text style={{fontSize:16}}>  Highlights</Text>
+                            </Row>
+                        </TouchableNativeFeedback>
                         <Container style={{borderBottomColor: 'rgba(0,0,0,0.1)',borderBottomWidth: 1, marginLeft:-20}}/>
                         <Row size={3}/>
-                        <Row size={7}>
-                            <Text style={{fontSize:16}}>Settings and privacy</Text>
-                        </Row>
-                        <Row size={7}>
-                            <Text style={{fontSize:16}}>Help Center</Text>
-                        </Row>
+                        <TouchableNativeFeedback>
+                            <Row size={7}>
+                                <Text style={{fontSize:16}}>Settings and privacy</Text>
+                            </Row>
+                        </TouchableNativeFeedback>
+                        <TouchableNativeFeedback>
+                            <Row size={7}>
+                                <Text style={{fontSize:16}}>Help Center</Text>
+                            </Row>
+                        </TouchableNativeFeedback>
                         <Row size={15}/>
                         <Container style={{borderBottomColor: 'rgba(0,0,0,0.1)',borderBottomWidth: 1, marginLeft:-20}}/>
                         <Row size={3}/>

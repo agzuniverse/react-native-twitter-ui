@@ -1,10 +1,11 @@
 import React from 'react';
 import {DrawerNavigator} from 'react-navigation';
-import Homescreen from './Homescreen';
+import Tabscreen from './Tabscreen';
 import Sidebar from './Sidebar';
 
-const App=DrawerNavigator({
-    Home:{screen:Homescreen},
+const App=DrawerNavigator(
+  {
+    Home:{screen:Tabscreen},
   },
   {
     drawerOpenRoute: 'DrawerOpen',
