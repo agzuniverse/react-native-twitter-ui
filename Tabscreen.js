@@ -1,19 +1,19 @@
 import React from 'react';
 import {Image, Text, TouchableNativeFeedback, TouchableHighlight} from 'react-native';
 import {TabNavigator} from 'react-navigation';
-import {Container, Header, Icon, Left, Body, Thumbnail, Fab} from 'native-base';
+import {Container, Header, Icon, Left, Body, Thumbnail, Fab, Form, Item, Input} from 'native-base';
 import Timeline from './Timeline';
 
 const Mainscreen=TabNavigator(
   {
       Main:{
-        screen:Timeline,
+        screen: Timeline,
         navigationOptions:{
           tabBarIcon: ({tintColor}) => <Icon name='home' style={{color:tintColor}}/>
         }
       },
       Search:{
-        screen: props => <Container style={{backgroundColor:'rgba(0,132,180,0.5)'}}></Container>,
+        screen: props => <Container style={{backgroundColor:'rgba(0,132,180,0.5)'}}><Form><Item rounded bordered style={{backgroundColor:'rgba(255,255,255,0.87)', marginLeft:10, marginRight:10, marginTop:10}}><Input placeholder="Search..."/></Item></Form></Container>,
         navigationOptions:{
           tabBarIcon: ({tintColor}) => <Icon name='search' style={{color:tintColor}}/>
         }
@@ -51,19 +51,12 @@ const Mainscreen=TabNavigator(
 );
 
 class Tabscreen extends React.Component {
-  constructor(){
-    super();
-    this.handler = this.handler.bind(this)
+  constructor(props){
+    super(props);
     this.state={
-      header:<Text style={{color:'rgba(0,0,0,0.87)', fontWeight:'700', fontSize:16}}>{'\n'}  Home</Text>
+      header:<Text style={{color:'rgba(0,0,0,0.87)', fontWeight:'700', fontSize:16}}>{'\n'}  Home</Text>,
+      globalStateUpdate: newState => this.setState(newState)
     };
-  }
-
-  handler(e) {
-    e.preventDefault()
-    this.setState({
-      //someVar: someValue
-    })
   }
 
   render() {
@@ -71,7 +64,7 @@ class Tabscreen extends React.Component {
       <Container>
         <Header hasTabs style={{height:90, backgroundColor:'rgba(255,255,255,0.87)'}} >
           <Left style={{flexDirection:'row'}}>
-          <TouchableHighlight onPress={()=>this.props.navigation.navigate('DrawerOpen')} underlayColor='black'>
+          <TouchableHighlight onPress={()=>this.props.navigation.navigate('DrawerOpen')} underlayColor='grey'>
             <Thumbnail source={{uri:'https://avatars1.githubusercontent.com/u/22353313?s=460&v=4'}} />
           </TouchableHighlight>
             {this.state.header}
@@ -83,7 +76,7 @@ class Tabscreen extends React.Component {
             <Icon name='ios-paper-plane'/>
           </Fab>
         </TouchableNativeFeedback>
-        <Mainscreen handler={this.handler}/>
+        <Mainscreen globalStateUpdate={this.state.globalStateUpdate}/>
       </Container>
     );
   }
