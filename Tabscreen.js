@@ -6,14 +6,14 @@ import Timeline from './Timeline';
 
 const Mainscreen=TabNavigator(
   {
-      Main:{
+      Home:{
         screen: Timeline,
         navigationOptions:{
           tabBarIcon: ({tintColor}) => <Icon name='home' style={{color:tintColor}}/>
         }
       },
       Search:{
-        screen: props => <Container style={{backgroundColor:'rgba(0,132,180,0.5)'}}><Form><Item rounded bordered style={{backgroundColor:'rgba(255,255,255,0.87)', marginLeft:10, marginRight:10, marginTop:10}}><Input placeholder="Search..."/></Item></Form></Container>,
+        screen: props => <Container onFocus style={{backgroundColor:'rgba(0,132,180,0.5)'}}></Container>,
         navigationOptions:{
           tabBarIcon: ({tintColor}) => <Icon name='search' style={{color:tintColor}}/>
         }
@@ -76,7 +76,15 @@ class Tabscreen extends React.Component {
             <Icon name='ios-paper-plane'/>
           </Fab>
         </TouchableNativeFeedback>
-        <Mainscreen globalStateUpdate={this.state.globalStateUpdate}/>
+        <Mainscreen screenProps={{globalStateUpdate:this.state.globalStateUpdate}} 
+        onNavigationStateChange={(prevState, currentState) => {
+            if(currentState.routes[currentState.index].routeName!='Search'){
+              this.setState({header:<Text style={{color:'rgba(0,0,0,0.87)', fontWeight:'700', fontSize:16}}>{'\n'}   {currentState.routes[currentState.index].routeName}</Text>})
+            }
+            else{
+              this.setState({header:<Form><Item rounded bordered style={{backgroundColor:'rgba(255,255,255,0.87)', width:225, marginLeft:10}}><Input placeholder="Search..."/></Item></Form>})
+            }
+          }}/>
       </Container>
     );
   }
