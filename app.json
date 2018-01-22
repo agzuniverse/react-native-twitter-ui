@@ -1,5 +1,15 @@
-{
-  "expo": {
-    "sdkVersion": "23.0.0"
-  }
-}
+ {
+   "expo": {
+    "name": "Twitter4HPDF",
+    "icon": "./logo.png",
+    "version": "1.0.0",
+    "slug": "react-native-test",
+    "sdkVersion": "23.0.0",
+    "ios": {
+      "bundleIdentifier": "com.agzuniverse.twitter4hpdf"
+    },
+    "android": {
+      "package": "com.agzuniverse.twitter4hpdf"
+    }
+   }
+ }
